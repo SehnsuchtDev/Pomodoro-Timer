@@ -1,0 +1,17 @@
+.horloge{
+    background:#d70e0e;
+    border-radius:50%;
+    width:160px;
+    height:160px;
+    border:2px solid #940303; 
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#time{
+    
+}
+
+div {
+}
