@@ -1,17 +1,56 @@
 .horloge{
-    background:#d70e0e;
+    /* background:white; */
     border-radius:50%;
     width:160px;
     height:160px;
-    border:2px solid #940303; 
+    border:2px solid white; 
     display:flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;    
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); 
+    margin: 1em;
+
 }
 
 #time{
     
 }
 
-div {
+body {
+    background-color: #d70e0e;
+    height: 100%;
+    font-family: "Oswald", sans-serif;
+    width: 99vw;
+    height: 95vh;
 }
+
+.etape {
+    height: 2em;
+    width: 10em;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); 
+    border-radius: 20px;
+    margin: 1em;
+    padding: 1em;
+}
+
+p {
+    margin: auto;
+    font-size: 1em;
+}
+
+div {
+    display: flex;
+    justify-content:center
+}
+
+button {
+    background-color: #d70e0e;
+    color: white;
+    border: white solid 2px;
+    border-radius: 20px;
+    padding: 0.5em 1em;
+    margin: 1em;
+    font-size: 1em;
+    cursor: pointer;
+}
+
