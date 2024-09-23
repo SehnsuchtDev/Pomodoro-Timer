@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Timer Pomodoro</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/570567783b.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
@@ -26,31 +26,28 @@
         </div>
     </div>
 
-    <div><button><i class="fa-solid fa-play"></i></button></div>
-    <!-- <i class="fa-solid fa-repeat"></i> -->
+    <div><div class="bouton" onClick="jouerPause()" ><i id="bouton" class="fa-solid fa-play" ></i></div></div>
 
-    <div class="formulaire">
-        <div>
-            <form action="" method="post">
+    <div><div class="bouton" id="parametres" ><i class="fa-solid fa-gear"></i></div></div>
+
+    <div class="formulaire cacher" id = "formulaireDiv">
+            <form action="changerValeurs()" method="post" id="formulaire">
                 <label for="travail">Travail : </label>
                 <input type="number" id="travail-minutes" name="travail-minutes" value="25" min="0" max="60">
                 <label for="travail-minutes">min</label>
                 <input type="number" id="travail-secondes" name="travail-secondes" value="00" min="0" max="60">
                 <label for="travail-secondes">s</label>
                 <input type="submit" value="OK">
-            </form>
-        </div>
 
-        <div>
-            <form action="" method="post">
+                <br>
+
                 <label for="pause">Pause : </label>
                 <input type="number" id="pause-minutes" name="pause-minutes" value="5" min="0" max="60">
                 <label for="pause-minutes">min</label>
-                <input type="number" id="pause-secondes" name="pause-secondes" value="00" min="0" max="60">
+                <input type="number" id="pause-secondes" name="pause-secondes" value="0" min="0" max="60">
                 <label for="pause-secondes">s</label>
                 <input type="submit" value="OK">
             </form>
-        </div>
     </div>
 
     <footer>Isaac Delauney 2024</footer>

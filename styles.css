@@ -16,6 +16,7 @@ body {
     font-family: "Oswald", sans-serif;
     width: 97vw;
     height: 97vh;
+    color:white;
 }
 
 
@@ -57,7 +58,11 @@ p {
     margin: 2.75em;
 }
 
-button {
+.cacher {
+    display: none;
+}
+
+.bouton {
     background-color: #b80d0d;
     color: white;
     border: white solid 2px;
@@ -65,6 +70,11 @@ button {
     padding: 0.5em 1em;
     font-size: 2em;
     cursor: pointer;
+    margin:0.5em;
+}
+
+input {
+    width:3em;
 }
 
 h1 {
