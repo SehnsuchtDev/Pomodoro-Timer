@@ -12,10 +12,10 @@
 }
 
 body {
-    background-color: #d70e0e;
+    background-color: #b80d0d;
     font-family: "Oswald", sans-serif;
-    width: 99vw;
-    height: 98vh;
+    width: 97vw;
+    height: 97vh;
 }
 
 
@@ -23,7 +23,7 @@ body {
 
 
 #time{
- font-size: 8em;   
+    font-size: 8em;   
 }
 
 div {
@@ -58,7 +58,7 @@ p {
 }
 
 button {
-    background-color: #d70e0e;
+    background-color: #b80d0d;
     color: white;
     border: white solid 2px;
     border-radius: 20px;
@@ -73,5 +73,20 @@ h1 {
     color: white;
     margin:0;
     margin-bottom: 0.25em;
+}
+
+footer {
+    background-color: rgb(54, 54, 54);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.actuel {
+    color:rgb(255, 255, 255);
+}
+
+.attend {
+    color:rgba(187, 187, 187, 0.747)
 }
 
