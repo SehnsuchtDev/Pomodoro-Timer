@@ -4,6 +4,8 @@ const pause = document.getElementById("pause");
 const bouton = document.getElementById("bouton");
 const formulaire = document.getElementById("formulaire");
 const parametres = document.getElementById("parametres");
+const fermer = document.getElementById("fermer");
+
 let intervalle;
 
 let nbMinTravail = 0;
@@ -122,12 +124,11 @@ function changerValeurs(heures, minutes){
 
 parametres.addEventListener("click", event => {
     let formulaireDiv = document.getElementById("formulaireDiv");
-    if(formulaireDiv.className.includes("cacher")){
-        formulaireDiv.className = "formulaire"
-    }
-    else {
-        formulaireDiv.classList.add("cacher");
-    }
+    formulaireDiv.className = "formulaire"
+})
+
+fermer.addEventListener("click", event => {
+    formulaireDiv.classList.add("cacher");
 })
 
 
