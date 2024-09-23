@@ -1,5 +1,4 @@
 .horloge{
-    /* background:white; */
     border-radius:50%;
     width:450px;
     height:450px;
@@ -8,23 +7,24 @@
     justify-content: center;
     align-items: center;    
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); 
-    margin: 1em;
+    margin: 1%;
 }
 
 body {
     background-color: #b80d0d;
+    transition: 5s;
     font-family: "Oswald", sans-serif;
-    width: 97vw;
-    height: 97vh;
     color:white;
+    padding-bottom: 1em;
 }
 
-
-
-
+.repos {
+    background-color: #720606;
+    transition: 5s;
+}
 
 #time{
-    font-size: 8em;   
+    font-size: 800%;   
 }
 
 div {
@@ -46,17 +46,9 @@ div {
 }
 
 p {
-    margin: 1em;
+    margin: 10%;
     font-size: 2em;
 }
-
-/* .formulaire {
-    display: flex;
-    justify-content: flex-end;
-    align-items:center;
-    flex-direction: column;
-    margin: 2.75em;
-} */
 
 .formulaire {
     position: fixed;
@@ -74,12 +66,11 @@ p {
 
 #formulaire {
     background-color: #b80d0d;
-    padding: 3em;
+    padding: 3%;
     border-radius: 20px;
     border: white solid 2px;
-    display:grid;
-    grid-template-columns: repeat(6, 2fr);
-    grid-template-rows: repeat(3, 4fr);
+    display:inline-block;
+    text-align: right;
 }
 
 .cacher {
@@ -90,11 +81,15 @@ p {
     background-color: #b80d0d;
     color: white;
     border: white solid 2px;
-    border-radius: 20px;
-    padding: 0.5em 1em;
+    border-radius: 50%;
     font-size: 2em;
     cursor: pointer;
-    margin:0.5em;
+    margin:0.5%;
+    min-width: 2em;
+}
+
+em {
+    margin: 0.5em;
 }
 
 input {
@@ -103,10 +98,10 @@ input {
 
 h1 {
     text-align: center;
-    font-size: 5em;
+    font-size: 400% ;
     color: white;
     margin:0;
-    margin-bottom: 0.25em;
+    margin-bottom: 0.25%;
 }
 
 footer {
@@ -114,14 +109,19 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: fixed;
+    bottom:0;
+    width:100%;
 }
 
 .actuel {
     color:rgb(255, 255, 255);
+    transition: 1s;
 }
 
 .attend {
-    color:rgba(187, 187, 187, 0.747)
+    color:#bbbbbbe0;
+    transition: 1s;
 }
 
 #fermer {

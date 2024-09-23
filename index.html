@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/570567783b.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-    <script defer src="script.js"/>
+    <script defer src="script.js"></script>
 </head>
-<body>
+<body id="fond">
 
     <div><h1>TIMER POMODORO</h1></div> 
     
@@ -26,23 +26,23 @@
         </div>
     </div>
 
-    <div><div class="bouton" onClick="jouerPause()" ><i id="bouton" class="fa-solid fa-play" ></i></div></div>
+    <div><div class="bouton" onClick="jouerPause()" ><em id="bouton" class="fa-solid fa-play" ></em></div></div>
 
-    <div><div class="bouton" id="parametres" ><i class="fa-solid fa-gear"></i></div></div>
+    <div><div class="bouton" id="parametres" ><em class="fa-solid fa-gear"></em></div></div>
 
     <div class="formulaire cacher" id = "formulaireDiv">
-        <button id="fermer" class="bouton"><i class="fa-solid fa-xmark"></i></button>
+        <button id="fermer" class="bouton"><em class="fa-solid fa-xmark"></em></button>
             <form action="changerValeurs()" method="post" id="formulaire">
-                <label for="travail">Travail : </label>
+                <label>Travail : </label>
                 <input type="number" id="travail-minutes" name="travail-minutes" value="25" min="0" max="60">
                 <label for="travail-minutes">min</label>
-                <input type="number" id="travail-secondes" name="travail-secondes" value="00" min="0" max="60">
+                <input type="number" id="travail-secondes" name="travail-secondes" value="0" min="0" max="60">
                 <label for="travail-secondes">s</label>
                 <input type="submit" value="OK">
 
                 <br>
 
-                <label for="pause">Pause : </label>
+                <label>Pause : </label>
                 <input type="number" id="pause-minutes" name="pause-minutes" value="5" min="0" max="60">
                 <label for="pause-minutes">min</label>
                 <input type="number" id="pause-secondes" name="pause-secondes" value="0" min="0" max="60">
