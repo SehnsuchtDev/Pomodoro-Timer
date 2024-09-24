@@ -111,6 +111,8 @@ function changerTempsActuel(min, sec){
 
 // Met à jour l'affichage de l'horloge, ajoute un 0 si nécessaire
 function mettreAjourHorloge(min, sec){
+    localStorage.setItem("minActu",minActu);
+    localStorage.setItem("secActu",secActu);
     if(sec < 10 || sec == "0") { 
         temps.innerText = min + ":0" + sec;
         return;
