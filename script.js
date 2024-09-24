@@ -1,3 +1,4 @@
+// Éléments HTML
 const temps = document.getElementById("time");
 const travail = document.getElementById("travail");
 const pause = document.getElementById("pause");
@@ -6,25 +7,7 @@ const formulaire = document.getElementById("formulaire");
 const parametres = document.getElementById("parametres");
 const fermer = document.getElementById("fermer");
 
-// console.log(document.cookie);
-
-function getCookie(cname) {
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for(let i = 0; i <ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
-
-
+// Variables
 let intervalle;
 let nbMinTravail;
 let nbSecTravail;
@@ -33,7 +16,9 @@ let nbSecRepos;
 let minActu;
 let secActu;
 let enTravail = true;
+let horlogeTourne = false;
 
+// Récupérer variables stockées si elles existent
 if(localStorage.getItem("nbMinTravail") == null){
     nbMinTravail = 25;
     nbSecTravail = 0;
@@ -56,14 +41,18 @@ if(localStorage.getItem("minActu") == null){
 } else {
     minActu = localStorage.getItem("minActu");
     secActu = localStorage.getItem("secActu");
-    if(localStorage.getItem("enTravail") == false){
+    if(localStorage.getItem("enTravail") == "false"){
         modePause();
     }
 }
 
-let horlogeTourne = false;
+if(localStorage.getItem("horlogeTourne") == "true"){
+    jouerPause();
+}
+
 mettreAjourHorloge(minActu, secActu);
 
+// Fais tourner le temps et vérifie la validité de l'horaire
 function diminuerTemps() {
     if(minActu == 0 && secActu == 0) {
         changerEtape();
@@ -79,40 +68,49 @@ function diminuerTemps() {
     mettreAjourHorloge(minActu, secActu);
 }
 
+// Passe du mode travail au mode pause et vice versa
 function changerEtape(){
-    let body = document.getElementById("fond");
     if(enTravail){
         modePause();
-        localStorage.setItem("enPause",enPause);
-        minActu = nbMinRepos;
-        secActu = nbSecRepos;
-        mettreAjourHorloge(minActu, secActu);
-        
+        localStorage.setItem("enTravail",enTravail);
+        changerTempsActuel(nbMinRepos, nbSecRepos);
     }
     else {
-        enTravail = true;
-        localStorage.setItem("enPause",enPause);
-        minActu = nbMinTravail;
-        secActu = nbSecTravail;
-        mettreAjourHorloge(minActu, secActu);
-        pause.className = "attend";
-        travail.className = "actuel";
-        body.classList.remove("repos");
+        modeTravail();
+        localStorage.setItem("enTravail",enTravail);
+        changerTempsActuel(nbMinTravail, nbSecTravail);
     }
-    localStorage.setItem("minActu",minActu);
-    localStorage.setItem("secActu",secActu);
 }
 
+// Gère la transition vers le mode pause
 function modePause(){
+    let body = document.getElementById("fond");
     enTravail = false;
     travail.className = "attend";
     pause.className = "actuel";
     body.classList.add("repos");
 }
 
-function mettreAjourHorloge(min, sec){
+// Gère la transition vers le mode travail
+function modeTravail(){
+    let body = document.getElementById("fond");
+    enTravail = true;
+    pause.className = "attend";
+    travail.className = "actuel";
+    body.classList.remove("repos");
+}
+
+// Change le temps actuel
+function changerTempsActuel(min, sec){
+    minActu = min;
+    secActu = sec;
+    mettreAjourHorloge(minActu, secActu);
     localStorage.setItem("minActu",minActu);
     localStorage.setItem("secActu",secActu);
+}
+
+// Met à jour l'affichage de l'horloge, ajoute un 0 si nécessaire
+function mettreAjourHorloge(min, sec){
     if(sec < 10 || sec == "0") { 
         temps.innerText = min + ":0" + sec;
         return;
@@ -120,6 +118,7 @@ function mettreAjourHorloge(min, sec){
     temps.innerText = min + ":" + sec;
 }
 
+// S'occupe de la gestion du bouton de lecture et de réinitialisation
 function jouerPause(){
     if(!horlogeTourne){
         bouton.className = "fa-solid fa-repeat";
@@ -131,15 +130,22 @@ function jouerPause(){
         clearInterval(intervalle);
         intervalle = null;
         horlogeTourne = false;
+        if(enTravail){
+            changerTempsActuel(nbMinTravail, nbSecTravail);
+        } else {
+            changerTempsActuel(nbMinRepos, nbSecRepos);
+        }
     }
-    
+    localStorage.setItem("horlogeTourne",horlogeTourne);
 }
 
+// Écoute l'envoi du formulaire
 formulaire.addEventListener("submit", event => {
     event.preventDefault();
     retourFormulaire();
 })
 
+// S'occupe de la gestion du formulaire
 function retourFormulaire(){
     let travailMinutes = document.getElementById("travail-minutes").value;
     let travailSecondes = document.getElementById("travail-secondes").value;
@@ -153,7 +159,7 @@ function retourFormulaire(){
             nbSecTravail = travailSecondes;
             chgt = true;
             localStorage.setItem("nbMinTravail",nbMinTravail);
-            localStorage.setItem("nbSecTravial",nbSecTravail);
+            localStorage.setItem("nbSecTravail",nbSecTravail);
         }
     }
 
@@ -162,8 +168,8 @@ function retourFormulaire(){
             nbMinRepos = pauseMinutes;
             nbSecRepos = pauseSecondes;
             chgt = true;
-            localStorage.setItem("nbMinPause",nbMinPause);
-            localStorage.setItem("nbSecPause",nbSecPause);
+            localStorage.setItem("nbMinRepos",nbMinRepos);
+            localStorage.setItem("nbSecRepos",nbSecRepos);
         }
     }
     if(chgt){
@@ -172,6 +178,7 @@ function retourFormulaire(){
     }
 }
 
+// Vérifie la validité des valeurs entrées
 function changerValeurs(heures, minutes){
     if(heures.length > 2 || minutes.length > 2) return false;
     if(heures == "00" || minutes == "00") return false;
@@ -180,11 +187,13 @@ function changerValeurs(heures, minutes){
     return heures < 60 && minutes < 60;
 }
 
+// Écoute le clic sur le bouton d'ouverture de paramètres
 parametres.addEventListener("click", event => {
     let formulaireDiv = document.getElementById("formulaireDiv");
     formulaireDiv.className = "formulaire"
 })
 
+// Écoute le clic sur le bouton de fermeture des paramètres
 fermer.addEventListener("click", event => {
     formulaireDiv.classList.add("cacher");
 })
